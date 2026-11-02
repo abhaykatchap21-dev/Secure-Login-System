@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Dashboard</h1>
+
+<h2>Welcome, {{ username }}!</h2>
+
+<p>You are successfully logged in.</p>
+<p>Your account is protected by password hashing and session authentication.</p>
+
+<form method="POST" action="{{ url_for('logout') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit">Logout</button>
+</form>
+{% endblock %}

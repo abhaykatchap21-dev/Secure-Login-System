@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #071426, #102c50, #071426);
+            color: #eaf2ff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+            padding: 35px;
+            background: #14243a;
+            border: 1px solid #294663;
+            border-radius: 16px;
+            box-shadow: 0 15px 45px #0008;
+        }
+
+        h1 {
+            text-align: center;
+            color: #59baff;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            color: #ffffff;
+        }
+
+        p {
+            color: #c0cde0;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin-top: 17px;
+            color: #dceaff;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-top: 8px;
+            border: 1px solid #385675;
+            border-radius: 8px;
+            background: #0b192b;
+            color: white;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #48aaff;
+            box-shadow: 0 0 5px #48aaff66;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 8px;
+            background: #1685e8;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #086ac3;
+        }
+
+        a {
+            color: #59baff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 22px;
+            color: #c0cde0;
+        }
+
+        .message {
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        .success {
+            background: #164d3b;
+            color: #a7f3d0;
+        }
+
+        .danger {
+            background: #5a2630;
+            color: #fecaca;
+        }
+
+        .warning {
+            background: #59451d;
+            color: #fde68a;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+
+    </div>
+</body>
+</html>
